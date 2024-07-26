@@ -1,0 +1,692 @@
+@import url("https://fonts.googleapis.com/css2?family=Risque&family=Roboto&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  box-sizing: border-box;
+  line-height: 1.2em;
+}
+
+ul,
+ol {
+  list-style-type: none;
+}
+
+.connect #connectForm, .connect .container, .presents__info-item, .presents__cards, .presents .container, .main, .header__logo a, .header .container, .header__menu, .header__menu ul {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#popup nav, .presents__cards-item, .main__btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main .main__left {
+  align-items: flex-end;
+  display: flex;
+  flex-direction: column;
+}
+
+.connect__form--checkbox {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+}
+
+#popup nav ul, .connect__form-wrapp, .presents__info-item div, .presents__cards-wrapp, .main__info, .main .container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: baseline;
+}
+
+#popup nav, .main .main__right, .main .main__left {
+  height: 100%;
+  max-width: 100%;
+  width: 100%;
+}
+
+.connect, .presents, .main {
+  height: 100vh;
+}
+
+#popup, .connect__form--select input, .presents__cards-item, .main__btn, .main .main__right .main__cloud {
+  transition: all 0.5s ease;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+* {
+  color: #ffffff;
+}
+
+.container {
+  max-width: 1340px;
+  width: 100%;
+  padding: 0 2rem;
+  margin: 0 auto;
+  position: relative;
+  z-index: 5;
+}
+
+h1 {
+  font-family: "Risque";
+  font-size: 5.2rem;
+  font-weight: 400;
+}
+
+h2 {
+  font-family: "Risque";
+  font-size: 5.2rem;
+  font-weight: 400;
+}
+
+h3 {
+  font-family: "Risque";
+  font-size: 4.2rem;
+  font-weight: 400;
+}
+
+button {
+  cursor: pointer;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 4rem 0 0;
+  z-index: 15;
+}
+.header * {
+  font-family: "Roboto";
+  font-size: 1.6rem;
+  font-weight: 400;
+}
+.header .container, .header__menu, .header__menu ul {
+  z-index: -1;
+}
+.header__menu, .header__logo {
+  max-width: 50%;
+  width: 100%;
+}
+.header__logo a {
+  width: fit-content;
+}
+.header__menu ul {
+  gap: 6rem;
+}
+.header__menu-popup {
+  border: none;
+  background: none;
+}
+.header__menu--animated {
+  perspective: 1000px;
+}
+.header__menu--animated span {
+  position: relative;
+  display: inline-block;
+  padding: 0;
+  transition: transform 0.3s;
+  transform-origin: 50% 0;
+  transform-style: preserve-3d;
+}
+.header__menu--animated span:before {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  content: attr(data-hover);
+  transition: color 0.3s;
+  transform: rotateX(-90deg);
+  transform-origin: 50% 0;
+  text-align: center;
+}
+.header__menu--animated:hover span, .header__menu--animated:focus span {
+  transform: rotateX(90deg) translateY(-22px);
+}
+.header__menu--animated:hover span:before, .header__menu--animated:focus span:before {
+  color: #d02b2b;
+}
+
+.main {
+  overflow: hidden;
+  background-color: #141429;
+  position: relative;
+}
+.main .main__left {
+  max-width: 45%;
+}
+.main .main__left .container {
+  padding: 0;
+  max-width: 500px;
+  margin: 0;
+}
+.main .main__right {
+  display: flex;
+  align-items: baseline;
+  max-width: 55%;
+}
+.main .main__right .main__cloud {
+  max-width: 280px;
+  width: 100%;
+  max-height: 180px;
+  height: 100%;
+  align-self: center;
+  position: relative;
+  opacity: 0;
+}
+.main .main__right .main__cloud div {
+  position: absolute;
+  top: 50%;
+  left: 45%;
+  transform: translate(-50%, -50%);
+}
+.main .main__right .main__cloud div p {
+  font-family: "Risque";
+  font-size: 1.8rem;
+  font-weight: 400;
+  color: #000;
+  text-wrap: nowrap;
+}
+.main .main__right .main__cloud.show {
+  animation: show 1s ease forwards;
+}
+.main .main__right .main__santa {
+  margin-top: auto;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  max-height: 40vw;
+  max-width: 62vw;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+.main .container {
+  height: 100%;
+}
+.main p {
+  font-size: 2.8rem;
+}
+.main__info {
+  gap: 3rem;
+}
+.main__btn {
+  border: 2px solid #ffffff;
+  border-radius: 20px 20px 20px 0;
+  background: transparent;
+  padding: 12px 0;
+  font-family: "Roboto";
+  font-size: 1.6rem;
+  font-weight: 400;
+  max-width: 186px;
+  width: 100%;
+}
+.main__btn:hover {
+  background-color: #ffffff;
+  color: #141429;
+}
+.main__btn--down {
+  background: transparent;
+  border: none;
+  animation: scrollDown 1s linear infinite;
+}
+.main__info, .main__btn--down {
+  margin-top: auto;
+}
+
+.presents {
+  background: url("../img/section-bg-two.webp") center/cover no-repeat;
+}
+.presents .container {
+  height: 100%;
+}
+.presents__cards-wrapp {
+  max-width: 700px;
+  gap: 3rem;
+}
+.presents__cards-wrapp p {
+  font-family: "Risque";
+  font-size: 2.8rem;
+  font-weight: 400;
+}
+.presents__cards {
+  max-width: 520px;
+  width: 100%;
+  position: relative;
+  z-index: 100;
+}
+.presents__cards-item {
+  width: 150px;
+  height: 150px;
+  border-radius: 100%;
+  background-color: #ffffff;
+  cursor: pointer;
+  box-shadow: 4px 10px 15px 0px rgba(0, 0, 0, 0.2509803922) inset;
+}
+.presents__cards-item.active {
+  background: transparent;
+  box-shadow: none;
+  border: 5px solid #ffffff;
+}
+.presents__cards-item img {
+  max-width: 100px;
+  aspect-ratio: 1;
+  object-fit: contain;
+}
+.presents__info {
+  max-width: 550px;
+  width: 100%;
+  border: 3px solid #ffffff;
+  border-radius: 20px;
+  padding: 6rem 3rem;
+}
+.presents__info-item {
+  display: none;
+}
+.presents__info-item div {
+  gap: 3rem;
+  max-width: 300px;
+}
+.presents__info-item div p {
+  font-family: "Roboto";
+  font-size: 2.8rem;
+  font-weight: 400;
+}
+.presents__info-item img {
+  max-width: 150px;
+  object-fit: contain;
+}
+.presents__info-item.active {
+  display: flex;
+}
+
+.connect {
+  background: url("../img/section-bg-three.webp") center/cover no-repeat;
+}
+.connect .container {
+  height: 100%;
+}
+.connect__form-wrapp {
+  gap: 3rem;
+  max-width: 470px;
+}
+.connect #connectForm {
+  flex-wrap: wrap;
+  width: 100%;
+  row-gap: 2rem;
+}
+.connect #connectForm * {
+  outline: none;
+}
+.connect__form {
+  max-width: calc(50% - 1rem);
+}
+.connect__form input,
+.connect__form textarea {
+  width: 100%;
+  border: 3px solid #ffffff;
+  border-radius: 15px;
+  background: transparent;
+  padding: 1rem 2rem;
+  color: #ffffff;
+  font-family: "Roboto";
+  font-size: 1.8rem;
+  font-weight: 400;
+}
+.connect__form input::placeholder,
+.connect__form textarea::placeholder {
+  color: #ffffff;
+  font-family: "Roboto";
+  font-size: 1.8rem;
+  font-weight: 400;
+}
+.connect__form--long {
+  max-width: 100%;
+  width: 100%;
+}
+
+.connect__form--checkbox {
+  flex-direction: row-reverse;
+  gap: 1rem;
+}
+.connect__form--checkbox p {
+  font-family: "Roboto";
+  font-size: 1.8rem;
+  font-weight: 400;
+  color: #d02b2b;
+}
+.connect__form--checkbox input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.connect__form--checkbox label {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #d02b2b;
+  border-radius: 3px;
+  cursor: pointer;
+}
+.connect__form--checkbox label .connect__form--checkmark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  background-color: #ffffff;
+  border-radius: 2px;
+}
+.connect__form--checkbox label .connect__form--checkmark::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 4px;
+  height: 8px;
+  border: solid #d02b2b;
+  border-width: 0 3px 3px 0;
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+.connect__form--checkbox input:checked + label .connect__form--checkmark {
+  opacity: 1;
+}
+
+.connect__form--select {
+  position: relative;
+}
+.connect__form--select input {
+  width: 100%;
+  cursor: pointer;
+}
+.connect__form--select .select-options {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  max-height: 0;
+  overflow: hidden;
+  background: #ffffff;
+  border-top: none;
+  border-radius: 0 0 15px 15px;
+  transition: max-height 0.3s ease-out;
+  z-index: 1000;
+}
+.connect__form--select .select-options .option {
+  padding: 1rem 2rem;
+  font-family: "Roboto";
+  font-size: 1.8rem;
+  font-weight: 400;
+  cursor: pointer;
+  color: #cecece;
+}
+.connect__form--select .select-options .option:hover {
+  color: #d02b2b;
+}
+.connect__form--select.open input {
+  border-radius: 15px 15px 0 0;
+}
+.connect__form--select.open .select-options {
+  max-height: 150px;
+}
+
+#popup {
+  max-width: 55%;
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  z-index: -1;
+  top: 0;
+  right: 0;
+  transform: scale(0);
+}
+#popup nav {
+  z-index: -1;
+  position: relative;
+}
+#popup nav ul {
+  gap: 4rem;
+  text-align: center;
+}
+#popup nav ul li {
+  width: 100%;
+}
+#popup nav ul a {
+  font-family: "Risque";
+  font-size: 3.2rem;
+  font-weight: 400;
+  cursor: pointer;
+}
+#popup.open {
+  transform: scale(1);
+}
+
+#openMenu svg {
+  width: 60px;
+  height: 60px;
+  background-color: #d02b2b;
+  border-radius: 100% 0 100% 100%;
+}
+#openMenu span {
+  position: fixed;
+  content: "";
+  width: 65px;
+  height: 65px;
+  background-color: #d02b2b;
+  border-radius: 0 0 0 85%;
+  z-index: -1;
+  opacity: 0;
+}
+#openMenu.open span {
+  animation: buble 1s ease forwards;
+}
+#openMenu.close span {
+  animation: bubleClose 1s ease;
+}
+
+#animated__snowflake {
+  z-index: 1;
+  position: fixed;
+  bottom: 0;
+  left: -12vw;
+}
+
+.animated__sky {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  z-index: 0;
+}
+.animated__sky path {
+  animation: stars 5s linear infinite;
+}
+.animated__sky path:nth-child(even) {
+  animation-delay: 1s;
+}
+.animated__sky circle {
+  animation: snow 10s ease infinite;
+}
+
+@keyframes show {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@keyframes buble {
+  0% {
+    top: 0;
+    right: 0;
+    width: 0%;
+    height: 0%;
+  }
+  100% {
+    top: 0;
+    right: 0;
+    width: 55vw;
+    height: 100vh;
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+@keyframes bubleClose {
+  0% {
+    opacity: 1;
+    top: 0;
+    right: 0;
+    width: 55vw;
+    height: 100vh;
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    top: 0;
+    right: 0;
+    width: 0%;
+    height: 0%;
+  }
+}
+@keyframes stars {
+  0%, 50%, 100% {
+    opacity: 0;
+  }
+  5%, 45% {
+    opacity: 1;
+  }
+}
+@keyframes scrollDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(20px);
+  }
+}
+@keyframes rotateEl {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes snow {
+  0% {
+    opacity: 0;
+    transform: translateY(0px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(50px);
+  }
+}
+@media screen and (max-width: 1024px) {
+  .header {
+    padding: 4rem 0;
+    backdrop-filter: blur(40px);
+  }
+  .header__menu {
+    justify-content: flex-end;
+  }
+  .header__menu ul {
+    display: none;
+  }
+  #animated__snowflake {
+    display: none;
+  }
+  main {
+    overflow: hidden;
+  }
+  .main {
+    flex-direction: column;
+    gap: 6rem;
+  }
+  .main .main__left,
+  .main .main__right {
+    max-width: 100%;
+  }
+  .main .main__left .container {
+    max-width: 100%;
+    padding: 0 2rem;
+  }
+  .main .main__left .main__info {
+    width: 100%;
+  }
+  .main .main__left .main__btn {
+    align-self: center;
+  }
+  .main .main__left .main__btn--down {
+    display: none;
+  }
+  .main .main__right .main__santa {
+    position: relative;
+    max-width: 100%;
+    max-height: 100%;
+  }
+  .main .main__cloud {
+    display: none;
+  }
+  .presents {
+    height: 100%;
+    padding: 9rem 0;
+  }
+  .presents .container {
+    flex-direction: column;
+    gap: 6rem;
+  }
+  .presents__cards-wrapp, .presents__info {
+    max-width: 100%;
+  }
+  .presents__info-item {
+    flex-direction: column-reverse;
+    gap: 2rem;
+  }
+  .presents__info-item div {
+    max-width: 100%;
+  }
+  .presents__cards-item {
+    width: 110px;
+    height: 110px;
+  }
+  .presents__cards-item img {
+    max-width: 70px;
+  }
+  @keyframes buble {
+    0% {
+      top: 0;
+      right: 0;
+      width: 0%;
+      height: 0%;
+    }
+    100% {
+      top: 0;
+      right: 0;
+      width: 100%;
+      height: 100vh;
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+}
+
+/*# sourceMappingURL=style.css.map */

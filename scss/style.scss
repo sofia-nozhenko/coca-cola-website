@@ -1,0 +1,699 @@
+// Fonts
+@import url("https://fonts.googleapis.com/css2?family=Risque&family=Roboto&display=swap");
+
+// Files
+@import "./common/reset";
+@import "./common/_variables";
+
+html {
+    font-size: 62.5%;
+}
+
+* {
+    color: $white;
+}
+
+.container {
+    max-width: $content-width;
+    width: 100%;
+    padding: 0 $space-s;
+    margin: 0 auto;
+    position: relative;
+    z-index: 5;
+}
+
+h1 {
+    @include font-family("Risque", $h1, 400);
+}
+
+h2 {
+    @include font-family("Risque", $h2, 400);
+}
+
+h3 {
+    @include font-family("Risque", $h3, 400);
+}
+
+button {
+    cursor: pointer;
+}
+
+// Header Layout
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: $space-m 0 0;
+    z-index: 15;
+    * {
+        @include font-family("Roboto", $text-s, 400);
+    }
+    .container,
+    &__menu,
+    &__menu ul {
+        z-index: -1;
+        @extend %layout-flex;
+    }
+    &__menu,
+    &__logo {
+        max-width: 50%;
+        width: 100%;
+    }
+    &__logo {
+        a {
+            @extend %layout-flex;
+            width: fit-content;
+        }
+    }
+    &__menu ul {
+        gap: $space-l;
+    }
+    &__menu-popup {
+        border: none;
+        background: none;
+    }
+    &__menu--animated {
+        perspective: 1000px;
+        span {
+            position: relative;
+            display: inline-block;
+            padding: 0;
+            transition: transform 0.3s;
+            transform-origin: 50% 0;
+            transform-style: preserve-3d;
+        }
+        span:before {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            content: attr(data-hover);
+            transition: color 0.3s;
+            transform: rotateX(-90deg);
+            transform-origin: 50% 0;
+            text-align: center;
+        }
+
+        &:hover span,
+        &:focus span {
+            transform: rotateX(90deg) translateY(-22px);
+        }
+
+        &:hover span:before,
+        &:focus span:before {
+            color: $accent;
+        }
+    }
+}
+
+// Main Section
+
+.main {
+    overflow: hidden;
+    @extend %full-height;
+    @extend %layout-flex;
+    background-color: $base;
+    position: relative;
+    .main__left {
+        @extend %full-size-block;
+        @extend %layout-flex-end;
+        max-width: 45%;
+        .container {
+            padding: 0;
+            max-width: 500px;
+            margin: 0;
+        }
+    }
+    .main__right {
+        @extend %full-size-block;
+        display: flex;
+        align-items: baseline;
+        max-width: 55%;
+        .main__cloud {
+            @extend %transition;
+            max-width: 280px;
+            width: 100%;
+            max-height: 180px;
+            height: 100%;
+            align-self: center;
+            position: relative;
+            opacity: 0;
+            div {
+                p {
+                    @include font-family("Risque", $text-m, 400);
+                    color: $black;
+                    text-wrap: nowrap;
+                }
+                position: absolute;
+                top: 50%;
+                left: 45%;
+                transform: translate(-50%, -50%);
+            }
+        }
+        .main__cloud.show {
+            animation: show 1s ease forwards;
+        }
+        .main__santa {
+            margin-top: auto;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            max-height: 40vw;
+            max-width: 62vw;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+        }
+    }
+    .container {
+        @extend %layout-flex-column;
+        height: 100%;
+    }
+    p {
+        font-size: $text-l;
+    }
+    &__info {
+        @extend %layout-flex-column;
+        gap: $space-sm;
+    }
+    &__btn {
+        border: 2px solid $white;
+        border-radius: 20px 20px 20px 0;
+        background: transparent;
+        padding: 12px 0;
+        @include font-family("Roboto", $text-s, 400);
+        max-width: 186px;
+        width: 100%;
+        @extend %layout-flex-center;
+        @extend %transition;
+        &:hover {
+            background-color: $white;
+            color: $base;
+        }
+    }
+    &__btn--down {
+        background: transparent;
+        border: none;
+        animation: scrollDown 1s linear infinite;
+    }
+    &__info,
+    &__btn--down {
+        margin-top: auto;
+    }
+}
+
+// Presents Section
+
+.presents {
+    @extend %full-height;
+    background: url("../img/section-bg-two.webp") center / cover no-repeat;
+    .container {
+        @extend %layout-flex;
+        height: 100%;
+    }
+    &__cards-wrapp {
+        max-width: 700px;
+        @extend %layout-flex-column;
+        gap: $space-sm;
+        p {
+            @include font-family("Risque", $text-l, 400);
+        }
+    }
+    &__cards {
+        @extend %layout-flex;
+        max-width: 520px;
+        width: 100%;
+        position: relative;
+        z-index: 100;
+        &-item {
+            @extend %layout-flex-center;
+            @extend %transition;
+            width: 150px;
+            height: 150px;
+            border-radius: 100%;
+            background-color: $white;
+            cursor: pointer;
+            box-shadow: 4px 10px 15px 0px #00000040 inset;
+            &.active {
+                background: transparent;
+                box-shadow: none;
+                border: 5px solid $white;
+            }
+            img {
+                max-width: 100px;
+                aspect-ratio: 1;
+                object-fit: contain;
+            }
+        }
+    }
+    &__info {
+        max-width: 550px;
+        width: 100%;
+        border: 3px solid $white;
+        border-radius: 20px;
+        padding: $space-l $space-sm;
+        &-item {
+            @extend %layout-flex;
+            display: none;
+            div {
+                @extend %layout-flex-column;
+                gap: $space-sm;
+                max-width: 300px;
+                p {
+                    @include font-family("Roboto", $text-ml, 400);
+                }
+            }
+            img {
+                max-width: 150px;
+                object-fit: contain;
+            }
+            &.active {
+                display: flex;
+            }
+        }
+    }
+}
+
+// Connect Section
+
+.connect {
+    @extend %full-height;
+    background: url("../img/section-bg-three.webp") center / cover no-repeat;
+    .container {
+        @extend %layout-flex;
+        height: 100%;
+    }
+    &__form-wrapp {
+        @extend %layout-flex-column;
+        gap: $space-sm;
+        max-width: 470px;
+    }
+    #connectForm {
+        @extend %layout-flex;
+        flex-wrap: wrap;
+        width: 100%;
+        row-gap: $space-s;
+        * {
+            outline: none;
+        }
+    }
+    &__form {
+        max-width: calc(100% / 2 - $space-xs);
+        input,
+        textarea {
+            width: 100%;
+            border: 3px solid $white;
+            border-radius: 15px;
+            background: transparent;
+            padding: $space-xs $space-s;
+            color: $white;
+            @include font-family("Roboto", $text-m, 400);
+            &::placeholder {
+                color: $white;
+                @include font-family("Roboto", $text-m, 400);
+            }
+        }
+        &--long {
+            max-width: 100%;
+            width: 100%;
+        }
+    }
+}
+
+// Custom Checkbox
+.connect__form {
+    &--checkbox {
+        @extend %layout-flex-start;
+        flex-direction: row-reverse;
+        gap: $space-xs;
+        p {
+            @include font-family("Roboto", $text-m, 400);
+            color: $accent;
+        }
+        input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        label {
+            position: relative;
+            width: 20px;
+            height: 20px;
+            border: 2px solid $accent;
+            border-radius: 3px;
+            cursor: pointer;
+            .connect__form--checkmark {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 100%;
+                height: 100%;
+                opacity: 0;
+                transition: opacity 0.2s ease;
+                background-color: $white;
+                border-radius: 2px;
+                &::after {
+                    content: "";
+                    position: absolute;
+                    left: 50%;
+                    top: 50%;
+                    width: 4px;
+                    height: 8px;
+                    border: solid $accent;
+                    border-width: 0 3px 3px 0;
+                    transform: translate(-50%, -50%) rotate(45deg);
+                }
+            }
+        }
+        input:checked + label .connect__form--checkmark {
+            opacity: 1;
+        }
+    }
+}
+
+// Custom Select
+
+.connect__form {
+    &--select {
+        position: relative;
+        input {
+            width: 100%;
+            @extend %transition;
+            cursor: pointer;
+        }
+        .select-options {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            max-height: 0;
+            overflow: hidden;
+            background: $white;
+            border-top: none;
+            border-radius: 0 0 15px 15px;
+            transition: max-height 0.3s ease-out;
+            z-index: 1000;
+            .option {
+                padding: $space-xs $space-s;
+                @include font-family("Roboto", $text-m, 400);
+                cursor: pointer;
+                color: $neutral;
+                &:hover {
+                    color: $accent;
+                }
+            }
+        }
+        &.open {
+            input {
+                border-radius: 15px 15px 0 0;
+            }
+            .select-options {
+                max-height: 150px;
+            }
+        }
+    }
+}
+
+// Popup
+
+#popup {
+    max-width: 55%;
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    z-index: -1;
+    top: 0;
+    right: 0;
+    transform: scale(0);
+    @extend %transition;
+    nav {
+        z-index: -1;
+        position: relative;
+        @extend %full-size-block;
+        @extend %layout-flex-center;
+        ul {
+            @extend %layout-flex-column;
+            gap: $space-m;
+            text-align: center;
+            li {
+                width: 100%;
+            }
+            a {
+                @include font-family("Risque", $h4, 400);
+                cursor: pointer;
+            }
+        }
+    }
+    &.open {
+        transform: scale(1);
+    }
+}
+
+#openMenu {
+    svg {
+        width: 60px;
+        height: 60px;
+        background-color: $accent;
+        border-radius: 100% 0 100% 100%;
+    }
+    span {
+        position: fixed;
+        content: "";
+        width: 65px;
+        height: 65px;
+        background-color: $accent;
+        border-radius: 0 0 0 85%;
+        z-index: -1;
+        opacity: 0;
+    }
+    &.open {
+        span {
+            animation: buble 1s ease forwards;
+        }
+    }
+    &.close {
+        span {
+            animation: bubleClose 1s ease;
+        }
+    }
+}
+
+// Animated Elements
+
+#animated__snowflake {
+    z-index: 1;
+    position: fixed;
+    bottom: 0;
+    left: -12vw;
+}
+
+.animated__sky {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: 0;
+    path {
+        animation: stars 5s linear infinite;
+        &:nth-child(even) {
+            animation-delay: 1s;
+        }
+    }
+    circle {
+        animation: snow 10s ease infinite;
+    }
+}
+
+// Animations
+
+@keyframes show {
+    0% {
+        opacity: 0;
+        transform: scale(0);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes buble {
+    0% {
+        top: 0;
+        right: 0;
+        width: 0%;
+        height: 0%;
+    }
+    100% {
+        top: 0;
+        right: 0;
+        width: 55vw;
+        height: 100vh;
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes bubleClose {
+    0% {
+        opacity: 1;
+        top: 0;
+        right: 0;
+        width: 55vw;
+        height: 100vh;
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        top: 0;
+        right: 0;
+        width: 0%;
+        height: 0%;
+    }
+}
+
+@keyframes stars {
+    0%,
+    50%,
+    100% {
+        opacity: 0;
+    }
+    5%,
+    45% {
+        opacity: 1;
+    }
+}
+
+@keyframes scrollDown {
+    0% {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(20px);
+    }
+}
+
+@keyframes rotateEl {
+    0% {
+        transform: rotate(0);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes snow {
+    0% {
+        opacity: 0;
+        transform: translateY(0px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(50px);
+    }
+}
+
+// Responsive
+
+@media screen and (max-width: 1024px) {
+    .header {
+        padding: $space-m 0;
+        backdrop-filter: blur(40px);
+        &__menu {
+            justify-content: flex-end;
+            ul {
+                display: none;
+            }
+        }
+    }
+
+    #animated__snowflake {
+        display: none;
+    }
+    main {
+        overflow: hidden;
+    }
+    .main {
+        flex-direction: column;
+        gap: $space-l;
+        .main__left,
+        .main__right {
+            max-width: 100%;
+        }
+        .main__left {
+            .container {
+                max-width: 100%;
+                padding: 0 $space-s;
+            }
+            .main__info {
+                width: 100%;
+            }
+            .main__btn {
+                align-self: center;
+            }
+            .main__btn--down {
+                display: none;
+            }
+        }
+        .main__right {
+            .main__santa {
+                position: relative;
+                max-width: 100%;
+                max-height: 100%;
+            }
+        }
+
+        .main__cloud {
+            display: none;
+        }
+    }
+    .presents {
+        height: 100%;
+        padding: $space-xl 0;
+        .container {
+            flex-direction: column;
+            gap: $space-l;
+        }
+        &__cards-wrapp,
+        &__info {
+            max-width: 100%;
+        }
+        &__info-item {
+            flex-direction: column-reverse;
+            gap: $space-s;
+            div{
+                max-width: 100%;
+            }
+        }
+        &__cards-item {
+            width: 110px;
+            height: 110px;
+            img {
+                max-width: 70px;
+            }
+        }
+    }
+    @keyframes buble {
+        0% {
+            top: 0;
+            right: 0;
+            width: 0%;
+            height: 0%;
+        }
+        100% {
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100vh;
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+}

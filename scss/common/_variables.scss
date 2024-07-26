@@ -1,0 +1,101 @@
+// Spacing
+$space-xs: 1rem;
+$space-s: 2rem;
+$space-sm: 3rem;
+$space-m: 4rem;
+$space-l: 6rem;
+$space-xl: 9rem;
+
+// Text
+$h1: 7.2rem;
+$h2: 5.6rem;
+$h3: 4.2rem;
+$h4: 3.2rem;
+
+$text-l: 3.8rem;
+$text-ml: 2.8rem;
+$text-m: 1.8rem;
+$text-s: 1.6rem;
+
+@mixin responsive-fonts {
+    @media screen and (max-width: 1024px) {
+        $h1: 5.2rem !global;
+        $h2: 5.2rem !global;
+        $h3: 4.2rem !global;
+        $h4: 3.2rem !global;
+
+        $text-l: 2.8rem !global;
+        $text-ml: 2.8rem !global;
+        $text-m: 1.8rem !global;
+        $text-s: 1.6rem !global;
+    }
+}
+
+@include responsive-fonts;
+
+// Colors
+$white: #ffffff;
+$black: #000;
+$accent: #d02b2b;
+$base: #141429;
+$neutral: #cecece;
+
+// Transition
+
+$main-transition: all 0.5s ease;
+
+$content-width: 1340px;
+
+// Extends
+
+%layout-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+%layout-flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+%layout-flex-end {
+    align-items: flex-end;
+    display: flex;
+    flex-direction: column;
+}
+
+%layout-flex-start {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+}
+
+%layout-flex-column {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: baseline;
+}
+
+%full-size-block {
+    height: 100%;
+    max-width: 100%;
+    width: 100%;
+}
+
+%full-height {
+    height: 100vh;
+}
+
+%transition {
+    transition: $main-transition;
+}
+
+// Mixins
+@mixin font-family($font-family, $font-size, $font-weight) {
+    font-family: $font-family;
+    font-size: $font-size;
+    font-weight: $font-weight;
+}
