@@ -705,3 +705,10 @@ button {
         }
     }
 }
+
+@media screen and (max-width: 575px) {
+    .connect__form{
+        max-width: 100%;
+        width: 100%;
+    }
+}
