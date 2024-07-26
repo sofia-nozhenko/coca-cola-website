@@ -353,6 +353,16 @@ button {
   max-width: 100%;
   width: 100%;
 }
+.connect__form-btn {
+  border-radius: 15px;
+  border: 3px solid #ffffff;
+  font-family: "Roboto";
+  font-size: 1.8rem;
+  font-weight: 400;
+}
+.connect__form-btn:hover {
+  color: #d02b2b;
+}
 
 .connect__form--checkbox {
   flex-direction: row-reverse;
@@ -602,7 +612,7 @@ button {
 }
 @media screen and (max-width: 1024px) {
   .header {
-    padding: 4rem 0;
+    padding: 2rem 0;
     backdrop-filter: blur(40px);
   }
   .header__menu {

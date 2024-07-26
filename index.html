@@ -36,7 +36,7 @@
                     <li><a href="#" class="header__menu--animated"><span data-hover="Products">Products</span></a></li>
                     <li><a href="#" class="header__menu--animated"><span data-hover="Contacts">Contacts</span></a></li>
                 </ul>
-                <button id="openMenu" class="header__menu-popup">
+                <button id="openMenu" class="header__menu-popup" aria-label="Open menu">
                     <span></span>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10" stroke="#fff" stroke-width=".6"
                         fill="rgba(0,0,0,0)" stroke-linecap="round" style="cursor: pointer">
@@ -87,9 +87,7 @@
                         </p>
                         <button class="main__btn">Call to action</button>
                     </div>
-                    <button class="main__btn--down">
-                        <img src="./img/arrow-down.svg">
-                    </button>
+                    <img class="main__btn--down" aria-label="Scroll Down" src="./img/arrow-down.svg" alt="Arrow Down">
                 </div>
             </div>
             <div class="main__right">
@@ -212,7 +210,7 @@
                 </svg>
             </div>
         </section>
-        <section class="presents slide-panel">
+        <section class="presents slide-panel" id="presents">
             <div class="container">
                 <div class="presents__cards-wrapp">
                     <h2>At least somewhere you can feel new year atmosphere</h2>
@@ -264,14 +262,14 @@
                     <h2>Write us <br> for real presents</h2>
                     <form action="#" id="connectForm">
                         <div class="connect__form">
-                            <input type="text" placeholder="Name">
+                            <input type="text" placeholder="Name" name="fullName">
                         </div>
                         <div class="connect__form">
-                            <input type="tel" placeholder="Phone">
+                            <input type="tel" placeholder="Phone" name="phoneNumber">
                         </div>
                         <div class="connect__form">
                             <div class="connect__form--select">
-                                <input type="text" placeholder="Select Gender" readonly>
+                                <input type="text" placeholder="Select Gender" name="selectGender" readonly required>
                                 <div class="select-options">
                                     <div class="option">Boy</div>
                                     <div class="option">Girl</div>
@@ -279,18 +277,19 @@
                             </div>
                         </div>
                         <div class="connect__form">
-                            <input type="email" placeholder="Email">
+                            <input type="email" placeholder="Email" name="emailAddress">
                         </div>
                         <div class="connect__form connect__form--long">
                             <textarea id="message" name="message" placeholder="Your witsh"></textarea>
                         </div>
                         <div class="connect__form connect__form--long connect__form--checkbox">
                             <p>Want Coca-cola with present?</p>
-                            <input type="checkbox" id="checkPresent">
-                            <label for="checkPresent">
+                            <input type="checkbox" id="checkPresent" aria-labelledby="checkPresentLabel">
+                            <label for="checkPresent" id="checkPresentLabel">
                                 <span class="connect__form--checkmark"></span>
                             </label>
                         </div>
+                        <button class="main__btn connect__form-btn" type="submit">Get a present</button>
                     </form>
                 </div>
             </div>
